@@ -6,16 +6,11 @@ node {
   }
 
   stage('Test') {
-    try {
-        sh "exit 1"
-        currentBuild.result = 'SUCCESS'
-    } catch (Exception err) {
-        currentBuild.result = 'FAILURE'
-    }
-    echo "RESULT: ${currentBuild.result}"
+    sh "exit 1"
   }
 
   stage('Deploy') {
+    echo currentBuild.result
     if (currentBuild.result == 'SUCCESS') {
       echo "Deploy success"
     } else {
