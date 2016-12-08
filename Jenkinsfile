@@ -10,6 +10,7 @@ node {
   }
 
   stage('Deploy') {
+    echo currentBuild.result
     if (currentBuild.result == 'SUCCESS') {
       echo "Deploy success"
     }
